@@ -20,3 +20,6 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+.singleItem{
+    cursor: pointer;
+}
