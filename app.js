@@ -1,4 +1,5 @@
-document.getElementById("button").addEventListener('click',()=>{
+document.getElementById("button").addEventListener('click',(event)=>{
+    event.preventDefault();
     let inputValue = document.getElementById('inputName').value
     let details = document.getElementById("details")
     details.innerHTML = ""
@@ -41,14 +42,15 @@ function details(id){
         let detailsDiv = document.createElement("div")
 
         let ingredientsList = '';
-        let measuresList = '';
+        let instructions = meal.strInstructions.split('.').map(step => step.trim()).filter(step => step).join('</li><li>');
+        let instructionsArray = meal.strInstructions.split('.').map(step => step.trim()).filter(step => step);
+
             for (let i = 1; i <= 20; i++) { 
                 const ingredient = meal[`strIngredient${i}`];
                 const measure = meal[`strMeasure${i}`];
 
                 if (ingredient) { 
-                    ingredientsList += `<li>${ingredient}</li>`;
-                    measuresList += `<li>${measure ? measure : ''}</li>`;
+                    ingredientsList += `<li>${ingredient}: ${measure ? measure : ''}</li>`;
                 }
             }
         let detailsInfo = `
@@ -60,10 +62,13 @@ function details(id){
                <ul>
                    ${ingredientsList}
                </ul>
-               <h6>Measures</h6>
-               <ul>
-                    ${measuresList}
-                </ul>
+               <h6>Instructions</h6>
+                    <input type="text" id="searchInstructions" placeholder="Search instructions..." />
+                    <div id="filteredInstructions">
+                        <ol id="instructionsList">
+                            ${instructions} 
+                        </ol>
+                    </div>
                 <h6>Category</h6>
                 <p>${meal.strCategory}</p>
                 <h6>Area</h6>
@@ -73,5 +78,14 @@ function details(id){
         `
         detailsDiv.innerHTML = detailsInfo
         details.appendChild(detailsDiv)
+        
+        document.getElementById('searchInstructions').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const filteredSteps = instructionsArray.filter(step => step.toLowerCase().includes(query));
+            const instructionsList = document.getElementById('instructionsList');
+            
+        
+            instructionsList.innerHTML = filteredSteps.map(step => `<li>${step}</li>`).join('');
+        })
     })
 }
