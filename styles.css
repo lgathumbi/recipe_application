@@ -1,0 +1,10 @@
+.container{
+    background-color: orange;
+    padding-bottom: 20px;
+    min-height: 100vh;
+}
+.headName{
+    color: indigo;
+    text-align: center;
+    padding-top: 20px;
+}
