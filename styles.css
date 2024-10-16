@@ -8,3 +8,15 @@
     text-align: center;
     padding-top: 20px;
 }
+#msg{
+    text-align: center;
+    color: red;
+    display: none;
+    margin-bottom: 20px;
+
+}
+#items{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
