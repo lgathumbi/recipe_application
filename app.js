@@ -39,6 +39,18 @@ function details(id){
         let details = document.getElementById("details")
         details.innerHTML = ""
         let detailsDiv = document.createElement("div")
+
+        let ingredientsList = '';
+        let measuresList = '';
+            for (let i = 1; i <= 20; i++) { 
+                const ingredient = meal[`strIngredient${i}`];
+                const measure = meal[`strMeasure${i}`];
+
+                if (ingredient) { 
+                    ingredientsList += `<li>${ingredient}</li>`;
+                    measuresList += `<li>${measure ? measure : ''}</li>`;
+                }
+            }
         let detailsInfo = `
         <div class="card" style="width: 19rem;">
             <img src="${meal.strMealThumb}" class="card-img-top" alt="${meal.strMeal}">
@@ -46,14 +58,16 @@ function details(id){
                <h3 class="card-text">${meal.strMeal}</h3>
                <h6>Ingredients</h6>
                <ul>
-                  <li>${meal.strArea}</li>
-                  <li>${meal.strCategory}</li>
-                  <li>${meal.strIngredient1}</li>
-                  <li>${meal.strIngredient2}</li>
-                  <li>${meal.strIngredient3}</li>
-                  <li>${meal.strIngredient4}</li>
-                  <li>${meal.strIngredient5}</li>
+                   ${ingredientsList}
                </ul>
+               <h6>Measures</h6>
+               <ul>
+                    ${measuresList}
+                </ul>
+                <h6>Category</h6>
+                <p>${meal.strCategory}</p>
+                <h6>Area</h6>
+                <p>${meal.strArea}</p>
             </div>
         </div>
         `
