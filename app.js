@@ -30,6 +30,7 @@ document.getElementById("button").addEventListener('click',(event)=>{
         }
     })
 })
+let reviews = [];
 function details(id){
     console.log(id)
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
@@ -78,7 +79,22 @@ function details(id){
         `
         detailsDiv.innerHTML = detailsInfo
         details.appendChild(detailsDiv)
+
+        displayReviews();
+
+        document.getElementById('reviewForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const rating = document.getElementById('rating').value;
+            const comment = document.getElementById('comment').value;
+
+            const newReview = { rating: parseInt(rating), comment: comment };
+            reviews.push(newReview);
+            displayReviews();
+
         
+            this.reset();
+        });
+
         document.getElementById('searchInstructions').addEventListener('input', function() {
             const query = this.value.toLowerCase();
             const filteredSteps = instructionsArray.filter(step => step.toLowerCase().includes(query));
@@ -88,4 +104,17 @@ function details(id){
             instructionsList.innerHTML = filteredSteps.map(step => `<li>${step}</li>`).join('');
         })
     })
+}
+function displayReviews() {
+    const reviewsContainer = document.getElementById('reviews');
+    reviewsContainer.innerHTML = "";
+    reviews.forEach(review => {
+        const reviewDiv = document.createElement('div');
+        reviewDiv.className = "review";
+        reviewDiv.innerHTML = `
+            <div class="stars">${'★'.repeat(review.rating)}</div>
+            <p>${review.comment}</p>
+        `;
+        reviewsContainer.appendChild(reviewDiv);
+    });
 }
