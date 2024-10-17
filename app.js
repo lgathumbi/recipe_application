@@ -80,7 +80,7 @@ function details(id){
         detailsDiv.innerHTML = detailsInfo
         details.appendChild(detailsDiv)
 
-        displayReviews();
+        document.getElementById('reviewSection').style.display = 'block';
 
         document.getElementById('reviewForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -94,7 +94,8 @@ function details(id){
         
             this.reset();
         });
-
+        displayReviews(id);
+        
         document.getElementById('searchInstructions').addEventListener('input', function() {
             const query = this.value.toLowerCase();
             const filteredSteps = instructionsArray.filter(step => step.toLowerCase().includes(query));
