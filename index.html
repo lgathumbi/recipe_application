@@ -20,8 +20,29 @@
             <div id="details">
             </div>
             <div id="items">
-
             </div>
+            <div id="reviewSection">
+                <h4>Reviews</h4>
+                <div id="reviews"></div>
+            
+                <h5>Submit a Review</h5>
+                <form id="reviewForm">
+                    <label for="rating">Rating:</label>
+                    <select id="rating" required>
+                        <option value="">Select...</option>
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                    <br>
+                    <label for="comment">Comment:</label>
+                    <textarea id="comment" required></textarea>
+                    <br>
+                    <button type="submit">Submit Review</button>
+                </form>
+            </div>            
         </div>
     </body>
     <script src="./app.js"></script>
