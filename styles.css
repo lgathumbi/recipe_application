@@ -1,7 +1,7 @@
 .container{
-    background-color: pink;
+    background-color: orange;
     padding-bottom: 20px;
-    min-height: 100vh;
+    min-height: 200vh;
 }
 .headName{
     color: indigo;
@@ -28,5 +28,6 @@
     justify-content: center;
     margin-bottom: 10px;
 }
+
 
 
