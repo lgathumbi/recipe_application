@@ -2,7 +2,6 @@
 - Welcome to my recipe application! 
 ## **Project overview -Feature**
 - Ingredients 
-- Save favorite recipes
 - User-friendly
 - Provide detailed recipe instructions
 ## **Technologies used**
