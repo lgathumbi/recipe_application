@@ -17,7 +17,7 @@ document.getElementById("button").addEventListener('click',(event)=>{
                 itemDiv.className = "m-2 singleItem";
                 itemDiv.setAttribute('onclick', `details(${meal.idMeal})`);
                 const itemInfo = `
-                <div class="card" style="width: 12rem;">
+                <div class="card" style="width: 15rem;">
                     <img src="${meal.strMealThumb}" class="card-img-top" alt="${meal.strMeal}">
                     <div class="card-body text-center">
                       <h5 class="card-text">${meal.strMeal}</h5>
@@ -56,7 +56,7 @@ function details(id){
                 }
             }
         let detailsInfo = `
-        <div class="card" style="width: 19rem;">
+        <div class="card" style="width: 50rem;">
             <img src="${meal.strMealThumb}" class="card-img-top" alt="${meal.strMeal}">
             <div class="card-body">
                <h3 class="card-text">${meal.strMeal}</h3>
