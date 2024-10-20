@@ -91,4 +91,7 @@ function details(id){
             instructionsList.innerHTML = filteredSteps.map(step => `<li>${step}</li>`).join('');
         })
     })
+    .catch((error) => {
+        console.error('Error', error)
+    });
 }
